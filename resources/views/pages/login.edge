@@ -1,0 +1,38 @@
+@component('base2', { title: "login" })
+  @slot('meta')
+    <meta name="description" content="Login to your Shortee account">
+  @endslot
+
+  @slot('main')
+    <div class="bg-transparent w-full max-w-md p-6 text-white text-center mx-auto">
+      <div class="w-24 h-24 mx-auto mb-6">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="avatar" class="rounded-full border-4 border-blue-500 p-1" />
+      </div>
+
+      <h2 class="text-2xl font-semibold mb-1">LOGIN</h2>
+      <p class="mb-6 text-blue-200">Welcome back</p>
+
+      <form action="/login" method="POST" class="space-y-4">
+          {{csrfField()}}
+        <input type="email" name="email" placeholder="Email" required class="w-full px-4 py-2 rounded-full bg-blue-800 text-white placeholder-blue-300" />
+        <input type="password" name="password" placeholder="Password" required class="w-full px-4 py-2 rounded-full bg-blue-800 text-white placeholder-blue-300" />
+
+        <div class="flex justify-between items-center text-sm px-2">
+          <label class="flex items-center gap-2">
+            <input type="checkbox" name="remember" class="form-checkbox text-blue-500" />
+            Remember me
+          </label>
+          <a href="#" class="text-blue-300 hover:underline">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="w-full py-2 bg-blue-600 hover:bg-blue-700 rounded-full mt-2">
+          LOGIN
+        </button>
+      </form>
+
+      <p class="mt-4 text-sm">
+        <a href="/register" class="text-blue-300 hover:underline">Create Account</a>
+      </p>
+    </div>
+  @endslot
+@end

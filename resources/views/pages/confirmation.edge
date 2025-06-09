@@ -1,0 +1,44 @@
+@component('base4', { title: "URL Created" })
+  @slot('main')
+    <section class="bg-[#0f172a] min-h-screen py-20 px-6 flex justify-center items-center">
+      <div class="bg-[#1e293b] text-white p-10 rounded-2xl shadow-xl w-full max-w-lg text-center">
+        <h2 class="text-2xl font-bold text-blue-400 mb-6">Short URL Created!</h2>
+       @if(shortUrl)
+  <p class="mb-4">Your short URL:</p>
+  <div class="flex items-center justify-between bg-[#334155] px-4 py-3 rounded-md mb-6">
+    <span id="short-url" class="truncate">{{ shortUrl }}</span>
+    <button onclick="copyToClipboard()" class="ml-4 px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded text-sm">Copy</button>
+  </div>
+
+  @if(isGuest)
+    <form action="/">
+      <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-full font-semibold">
+        Retour à l’accueil
+      </button>
+    </form>
+  @else
+  <form action="{{ isGuest ? '/' : '/dash' }}">
+    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full font-semibold">
+      {{ isGuest ? 'Back to Home' : 'Go to Dashboard' }}
+    </button>
+  </form>
+  @endif
+
+@else
+  <p class="text-red-500 font-semibold">Error: Failed to generate the URL.</p>
+@endif
+
+
+      </div>
+    </section>
+
+    <script>
+      function copyToClipboard() {
+        const text = document.getElementById('short-url').innerText
+        navigator.clipboard.writeText(text)
+          .then(() => alert('Copied to clipboard!'))
+          .catch(() => alert('Failed to copy'))
+      }
+    </script>
+  @endslot
+@end

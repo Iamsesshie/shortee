@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ title || "Your default title" }}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- CSRF token pour les formulaires -->
+  <meta name="csrf-token" content="{{ csrfToken }}">
+
+  @if ($slots.meta)
+    {{{ await $slots.meta() }}}
+  @endif
+</head>
+<body class="bg-gradient-to-b from-blue-900 to-black min-h-screen flex items-center justify-center">
+  {{{ await $slots.main() }}}
+</body>
+</html>

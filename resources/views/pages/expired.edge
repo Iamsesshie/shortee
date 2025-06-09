@@ -1,0 +1,15 @@
+@component('base', { title: "Lien désactivé" })
+  @slot('main')
+    <div class="max-w-xl mx-auto mt-20 text-center">
+      <div class="bg-red-900/30 border border-red-500 rounded-2xl p-8 shadow-lg">
+        <h1 class="text-4xl font-extrabold text-red-500 mb-4">⛔ Lien désactivé</h1>
+        <p class="text-gray-300 mb-6">
+          Ce lien a atteint sa <span class="font-semibold text-white">limite de clics autorisés</span> ou a expiré.
+        </p>
+        <a href="/" class="inline-block mt-4 px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-xl transition">
+          ← Retour à l’accueil
+        </a>
+      </div>
+    </div>
+  @endslot
+@end
