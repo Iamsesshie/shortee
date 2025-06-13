@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  shortee-app:
+    build: .
+    container_name: shortee
+    ports:
+      - "3333:3333"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    command: node build/server.js
+
+  db:
+    image: mysql:8.0
+    container_name: shortee_mysql
+    environment:
+      TZ: UTC
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: shortee_db
+      MYSQL_USER: shortee
+      MYSQL_PASSWORD: secret
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+
+volumes:
+  db_data:
