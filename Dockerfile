@@ -31,9 +31,6 @@ COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/public ./public
 COPY --from=build /app/resources ./resources
 
-# Copier le .env inject par Render
-COPY /etc/secrets/.env .env
-
 
 
 EXPOSE 3333
