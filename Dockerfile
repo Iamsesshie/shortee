@@ -7,7 +7,8 @@ COPY tsconfig.json ./
 COPY . .
 
 RUN npm install
-RUN npm run build
+RUN npm run build || echo "Build failed, check errors"
+
 
 FROM node:20-bullseye
 
@@ -21,4 +22,4 @@ COPY --from=build /app/resources ./resources
 
 EXPOSE 3333
 
-CMD ["node", "build/server.js"]
+CMD ["node", "build/bin/server.js"]

@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
     volumes:
       - .:/app
-    command: node build/server.js
+    command: node build/bin/server.js
 
   db:
     image: mysql:8.0
